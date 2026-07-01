@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Rozi ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+overflow-x:hidden;
+background:linear-gradient(135deg,#ff4d79,#ff9eb5,#ffd6e8);
+height:100%;
+color:white;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+.container{
+width:90%;
+max-width:900px;
+margin:40px auto;
+padding:30px;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(15px);
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,.3);
+text-align:center;
+}
+
+h1{
+font-family:"Great Vibes";
+font-size:70px;
+margin-bottom:20px;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 15px white;}
+to{text-shadow:0 0 35px yellow;}
+}
+
+.typing{
+font-size:24px;
+min-height:50px;
+margin-bottom:25px;
+font-weight:bold;
+}
+
+.cake{
+font-size:120px;
+animation:bounce 1.2s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-18px);}
+}
+
+.shayari{
+font-size:21px;
+line-height:1.9;
+white-space:pre-line;
+padding:20px;
+margin-top:20px;
+}
+
+button{
+margin-top:25px;
+padding:15px 35px;
+font-size:20px;
+border:none;
+border-radius:50px;
+background:#ff0066;
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+box-shadow:0 0 20px white;
+}
+
+#surprise{
+display:none;
+font-size:34px;
+margin-top:25px;
+animation:zoom 1s infinite alternate;
+}
+
+@keyframes zoom{
+from{transform:scale(1);}
+to{transform:scale(1.08);}
+}
+
+.balloon{
+position:fixed;
+bottom:-150px;
+font-size:55px;
+animation:fly linear infinite;
+}
+
+@keyframes fly{
+to{
+transform:translateY(-120vh);
+}
+}
+
+.heart{
+position:fixed;
+font-size:25px;
+animation:heartFly linear infinite;
+}
+
+@keyframes heartFly{
+0%{
+transform:translateY(100vh) scale(.5);
+opacity:0;
+}
+100%{
+transform:translateY(-120vh) scale(1.5);
+opacity:1;
+}
+}
+
+footer{
+margin:35px;
+text-align:center;
+font-size:18px;
+}
+
+</style>
+</head>
+<body>
+
+<audio autoplay loop>
+<source src="birthday.mp3" type="audio/mp3">
+</audio>
+
+<canvas id="confetti"></canvas>
+
+<div class="container">
+
+<h1>🎂 Happy Birthday Rozi 🎂</h1>
+
+<div class="typing"></div>
+
+<div class="cake">🎂</div>
+
+<div class="shayari">
+
+🌸 Happy Birthday, Rozi! 🌸
+
+Naam tumhara bhale hi Neelam ho,
+Lekin tum ho heere jaisi anmol. 💎
+
+Rozi, tumhari pyaari si muskaan mein
+Chhupa hai khushiyon ka ek gehra mol. 😊
+
+Mubarak ho tumko janamdin ka ye haseen aur khoobsurat din,
+Dua hai meri ki tumhari khushiyon ka kabhi na ho koi tol. 🎂🎉
+
+Aur tum jahan bhi jao,
+Wahan khud-ba-khud ban jaaye khushiyon ka mahaul. ✨
+
+Hamesha yun hi muskuraati raho,
+Har khwaab tumhara haqeeqat ban jaaye.
+
+Janamdin ki dher saari shubhkamnayein,
+Rozi! ❤️🧿🎀
+
+</div>
+
+<button onclick="showSurprise()">
+🎁 Click For Surprise
+</button>
+
+<div id="surprise">
+
+❤️ You Are Precious ❤️
+
+🌹 Stay Blessed Forever 🌹
+
+🎂 Happy Birthday Neelam (Rozi) 🎂
+
+💖 May Every Dream Come True 💖
+
+</div>
+
+</div>
+
+<footer>
+Made with ❤️ Especially for Rozi
+</footer>
+
+<script>
+
+const text="Wishing the sweetest birthday to the most beautiful soul... ❤️";
+let i=0;
+
+function typing(){
+
+if(i<text.length){
+
+document.querySelector(".typing").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typing,70);
+
+}
+
+}
+
+typing();
+
+function showSurprise(){
+
+document.getElementById("surprise").style.display="block";
+
+confettiBurst();
+
+}
+
+function balloon(){
+
+let b=document.createElement("div");
+
+b.className="balloon";
+
+b.innerHTML=["🎈","🎈","🎈"][Math.floor(Math.random()*3)];
+
+b.style.left=Math.random()*100+"vw";
+
+b.style.animationDuration=5+Math.random()*5+"s";
+
+document.body.appendChild(b);
+
+setTimeout(()=>b.remove(),10000);
+
+}
+
+setInterval(balloon,500);
+
+function heart(){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤️";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.animationDuration=4+Math.random()*5+"s";
+
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),9000);
+
+}
+
+setInterval(heart,400);
+
+const canvas=document.getElementById("confetti");
+
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
+let pieces=[];
+
+for(let i=0;i<250;i++){
+
+pieces.push({
+
+x:Math.random()*canvas.width,
+
+y:Math.random()*canvas.height,
+
+r:Math.random()*6+2,
+
+d:Math.random()*250,
+
+color:`hsl(${Math.random()*360},100%,50%)`
+
+});
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+pieces.forEach(p=>{
+
+ctx.beginPath();
+
+ctx.fillStyle=p.color;
+
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+
+ctx.fill();
+
+});
+
+update();
+
+}
+
+function update(){
+
+pieces.forEach(p=>{
+
+p.y+=2;
+
+if(p.y>canvas.height){
+
+p.y=0;
+
+p.x=Math.random()*canvas.width;
+
+}
+
+});
+
+}
+
+setInterval(draw,20);
+
+function confettiBurst(){
+
+for(let i=0;i<100;i++){
+
+pieces.push({
+
+x:canvas.width/2,
+
+y:canvas.height/2,
+
+r:Math.random()*8,
+
+d:Math.random()*360,
+
+color:`hsl(${Math.random()*360},100%,50%)`
+
+});
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
