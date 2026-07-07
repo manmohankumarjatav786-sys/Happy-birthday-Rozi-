@@ -1,985 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For Sona ❤️</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for premium typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Hargun ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+overflow-x:hidden;
+background:linear-gradient(135deg,#ff4d79,#ff9eb5,#ffd6e8);
+height:100%;
+color:white;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+.container{
+width:90%;
+max-width:900px;
+margin:40px auto;
+padding:30px;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(15px);
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,.3);
+text-align:center;
+}
+
+h1{
+font-family:"Great Vibes";
+font-size:70px;
+margin-bottom:20px;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 15px white;}
+to{text-shadow:0 0 35px yellow;}
+}
+
+.typing{
+font-size:24px;
+min-height:50px;
+margin-bottom:25px;
+font-weight:bold;
+}
+
+.cake{
+font-size:120px;
+animation:bounce 1.2s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-18px);}
+}
+
+.shayari{
+font-size:21px;
+line-height:1.9;
+white-space:pre-line;
+padding:20px;
+margin-top:20px;
+}
+
+button{
+margin-top:25px;
+padding:15px 35px;
+font-size:20px;
+border:none;
+border-radius:50px;
+background:#ff0066;
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+box-shadow:0 0 20px white;
+}
+
+#surprise{
+display:none;
+font-size:34px;
+margin-top:25px;
+animation:zoom 1s infinite alternate;
+}
+
+@keyframes zoom{
+from{transform:scale(1);}
+to{transform:scale(1.08);}
+}
+
+.balloon{
+position:fixed;
+bottom:-150px;
+font-size:55px;
+animation:fly linear infinite;
+}
+
+@keyframes fly{
+to{
+transform:translateY(-120vh);
+}
+}
+
+.heart{
+position:fixed;
+font-size:25px;
+animation:heartFly linear infinite;
+}
+
+@keyframes heartFly{
+0%{
+transform:translateY(100vh) scale(.5);
+opacity:0;
+}
+100%{
+transform:translateY(-120vh) scale(1.5);
+opacity:1;
+}
+}
+
+footer{
+margin:35px;
+text-align:center;
+font-size:18px;
+}
+
+</style>
 </head>
 <body>
-    <!-- Background Audio (Requires user interaction to play) -->
-    <!-- Using a placeholder romantic piano track. Replace src with your own if needed -->
-    <audio id="bg-music" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/05/16/audio_097486f059.mp3?filename=romantic-piano-110037.mp3" type="audio/mpeg">
-    </audio>
 
-    <!-- Global Background Elements -->
-    <div id="particle-container"></div>
-    <canvas id="fireworks-canvas"></canvas>
+<audio autoplay loop>
+<source src="birthday.mp3" type="audio/mp3">
+</audio>
 
-    <!-- 1. Loading Screen -->
-    <section id="loading-screen" class="screen active">
-        <div class="loading-content">
-            <div class="glowing-heart">❤️</div>
-            <div class="loading-text">Loading your surprise...</div>
-        </div>
-    </section>
+<canvas id="confetti"></canvas>
 
-    <!-- 2. Intro Screen -->
-    <section id="intro-screen" class="screen hidden">
-        <div class="intro-content">
-            <h1 class="animated-text">Touch My Heart ❤️</h1>
-            <div id="start-heart" class="interactive-heart">
-                <svg viewBox="0 0 32 29.6" class="heart-svg">
-                    <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
-                    c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
-                </svg>
-            </div>
-        </div>
-    </section>
+<div class="container">
 
-    <!-- 3 & 4. Envelope Screen -->
-    <section id="envelope-screen" class="screen hidden">
-        <div class="envelope-wrapper">
-            <div class="envelope" id="envelope">
-                <div class="flap top-flap"></div>
-                <div class="flap right-flap"></div>
-                <div class="flap left-flap"></div>
-                <div class="flap bottom-flap"></div>
-                <div class="letter">
-                    <p>Dear Sona ❤️</p>
-                    <p>Open me...</p>
-                </div>
-            </div>
-            <p class="instruction-text">Tap to open</p>
-        </div>
-    </section>
+<h1>🎂 Happy Birthday Hargun🎂</h1>
 
-    <!-- 5. Love Letter Screen -->
-    <section id="letter-screen" class="screen hidden">
-        <div class="glass-panel">
-            <div id="typewriter-text" class="typewriter-content"></div>
-            <button id="btn-continue" class="btn-premium hidden">Continue</button>
-        </div>
-    </section>
+<div class="typing"></div>
 
-    <!-- 7. Proposal Scene -->
-    <section id="proposal-screen" class="screen hidden">
-        <div class="proposal-content glass-panel">
-            <div class="ring-container">
-                <!-- Premium CSS/SVG Diamond Ring -->
-                <div class="diamond"></div>
-                <div class="band"></div>
-            </div>
-            <h2 class="proposal-text">Will You Be Mine Forever?</h2>
-            <div class="button-group">
-                <button id="btn-yes" class="btn-premium btn-yes">YES ❤️</button>
-                <button id="btn-no" class="btn-premium btn-no">NO 🙈</button>
-            </div>
-        </div>
-    </section>
+<div class="cake">🎂</div>
 
-    <!-- 8. Celebration Scene -->
-    <section id="celebration-screen" class="screen hidden">
-        <div class="celebration-content">
-            <h1 class="massive-text glow-text">I LOVE YOU SONA ❤️</h1>
-            <h2 class="sub-massive-text fade-in-delay">Forever & Always</h2>
-            <div class="infinite-hearts-container"></div>
-            <div class="ending-text fade-in-delay-long">Our Story Begins Here ❤️</div>
-        </div>
-    </section>
+<div class="shayari">
 
-    <script src="script.js"></script>
+🌸 Happy Birthday, Hargun! 🌸
+
+╔══════❀🎂❀══════╗
+✨ 𝓗𝓪𝓹𝓹𝔂 𝓑𝓲𝓻𝓽𝓱𝓭𝓪𝔂 ✨
+💖 Hargun 💖
+╚══════❀🎂❀══════╝
+
+🌸 Hargun, ajj da din ae bada khaas,
+😊 Rab rakhe hamesha tere chehre te haas.
+
+🌟 Har supna hove tera poora ik din,
+✨ Khushiyan naal chamke teri har morning.
+
+🤲 Dua ae Rabb ton, hove tera har safar aasaan,
+🌈 Khushiyan hi khushiyan hon, na hove koi pareshan.
+
+🎉 Janamdin mubarak dilon vaar-vaar,
+💖 Hamesha reh hasdi, tu ae sab ton pyaar!
+
+🎂🥳✨ Happy Birthday, Hargun! ❤️🧿🎀✨🥳🎂
+</div>
+
+<button onclick="showSurprise()">
+🎁 Click For Surprise
+</button>
+
+<div id="surprise">
+
+❤️ You Are Precious ❤️
+
+🌹 Stay Blessed Forever 🌹
+
+🎂 Happy Birthday Gurpreet (Hargun) 🎂
+
+💖 May Every Dream Come True 💖
+
+</div>
+
+</div>
+
+<footer>
+Made with ❤️ Especially for Hargun
+</footer>
+
+<script>
+
+const text="Wishing the sweetest birthday to the most beautiful soul... ❤️";
+let i=0;
+
+function typing(){
+
+if(i<text.length){
+
+document.querySelector(".typing").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typing,70);
+
+}
+
+}
+
+typing();
+
+function showSurprise(){
+
+document.getElementById("surprise").style.display="block";
+
+confettiBurst();
+
+}
+
+function balloon(){
+
+let b=document.createElement("div");
+
+b.className="balloon";
+
+b.innerHTML=["🎈","🎈","🎈"][Math.floor(Math.random()*3)];
+
+b.style.left=Math.random()*100+"vw";
+
+b.style.animationDuration=5+Math.random()*5+"s";
+
+document.body.appendChild(b);
+
+setTimeout(()=>b.remove(),10000);
+
+}
+
+setInterval(balloon,500);
+
+function heart(){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤️";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.animationDuration=4+Math.random()*5+"s";
+
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),9000);
+
+}
+
+setInterval(heart,400);
+
+const canvas=document.getElementById("confetti");
+
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
+let pieces=[];
+
+for(let i=0;i<250;i++){
+
+pieces.push({
+
+x:Math.random()*canvas.width,
+
+y:Math.random()*canvas.height,
+
+r:Math.random()*6+2,
+
+d:Math.random()*250,
+
+color:`hsl(${Math.random()*360},100%,50%)`
+
+});
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+pieces.forEach(p=>{
+
+ctx.beginPath();
+
+ctx.fillStyle=p.color;
+
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+
+ctx.fill();
+
+});
+
+update();
+
+}
+
+function update(){
+
+pieces.forEach(p=>{
+
+p.y+=2;
+
+if(p.y>canvas.height){
+
+p.y=0;
+
+p.x=Math.random()*canvas.width;
+
+}
+
+});
+
+}
+
+setInterval(draw,20);
+
+function confettiBurst(){
+
+for(let i=0;i<100;i++){
+
+pieces.push({
+
+x:canvas.width/2,
+
+y:canvas.height/2,
+
+r:Math.random()*8,
+
+d:Math.random()*360,
+
+color:`hsl(${Math.random()*360},100%,50%)`
+
+});
+
+}
+
+}
+
+</script>
+
 </body>
 </html>
-/* 
-    Ultra-Premium CSS Styling
-    Theme: Dark black + pink + purple gradient, Glassmorphism, Cinematic animations
-*/
-
-:root {
-    --bg-dark: #05010a;
-    --bg-purple: #2a0845;
-    --bg-pink: #641b4d;
-    --text-primary: #ffffff;
-    --text-gold: #e8c37d;
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glow-pink: rgba(255, 105, 180, 0.6);
-    --glow-purple: rgba(138, 43, 226, 0.6);
-    --font-heading: 'Cormorant Garamond', serif;
-    --font-body: 'Montserrat', sans-serif;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body, html {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: radial-gradient(circle at center, var(--bg-purple) 0%, var(--bg-dark) 80%, #000 100%);
-    font-family: var(--font-body);
-    color: var(--text-primary);
-    -webkit-font-smoothing: antialiased;
-}
-
-/* Global Screen Management */
-.screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1), transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-    z-index: 10;
-    opacity: 0;
-    pointer-events: none;
-    transform: scale(1.05);
-}
-
-.screen.active {
-    opacity: 1;
-    pointer-events: all;
-    transform: scale(1);
-}
-
-.screen.hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: scale(0.95);
-}
-
-/* Background Effects Container */
-#particle-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-#fireworks-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
-}
-
-/* Glassmorphism Panel */
-.glass-panel {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 40px;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.02);
-    text-align: center;
-    max-width: 90%;
-    width: 600px;
-    z-index: 20;
-}
-
-/* --- 1. Loading Screen --- */
-.loading-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.glowing-heart {
-    font-size: 3rem;
-    animation: pulse-glow 1.5s infinite alternate ease-in-out;
-}
-
-.loading-text {
-    font-family: var(--font-body);
-    font-weight: 300;
-    letter-spacing: 2px;
-    font-size: 1rem;
-    animation: fade-pulse 2s infinite;
-}
-
-/* --- 2. Intro Screen --- */
-.intro-content {
-    text-align: center;
-    z-index: 20;
-}
-
-.animated-text {
-    font-family: var(--font-heading);
-    font-size: 4rem;
-    font-weight: 400;
-    margin-bottom: 40px;
-    background: linear-gradient(45deg, #fff, #ffb6c1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 20px rgba(255, 182, 193, 0.3);
-}
-
-.interactive-heart {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    animation: float 4s ease-in-out infinite;
-}
-
-.interactive-heart:hover {
-    transform: scale(1.1);
-}
-
-.heart-svg {
-    fill: #ff2a5f;
-    filter: drop-shadow(0 0 15px rgba(255, 42, 95, 0.6));
-    animation: heartbeat 1.5s infinite;
-}
-
-/* --- 3 & 4. Envelope Animation --- */
-.envelope-wrapper {
-    position: relative;
-    cursor: pointer;
-    z-index: 20;
-}
-
-.envelope {
-    position: relative;
-    width: 300px;
-    height: 200px;
-    background: #1a0b2e;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 30px rgba(138, 43, 226, 0.3);
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.envelope-wrapper:hover .envelope {
-    transform: translateY(-10px);
-}
-
-.flap {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-style: solid;
-    border-color: transparent;
-}
-
-.bottom-flap {
-    border-width: 100px 150px;
-    border-bottom-color: #24113d;
-    bottom: 0;
-    z-index: 4;
-}
-
-.left-flap {
-    border-width: 100px 150px;
-    border-left-color: #1e0c33;
-    left: 0;
-    z-index: 3;
-}
-
-.right-flap {
-    border-width: 100px 150px;
-    border-right-color: #1e0c33;
-    right: 0;
-    z-index: 3;
-}
-
-.top-flap {
-    border-width: 100px 150px;
-    border-top-color: #2d164d;
-    top: 0;
-    transform-origin: top;
-    transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
-    z-index: 5;
-}
-
-.letter {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    background: #fff;
-    border-radius: 4px;
-    padding: 20px;
-    color: #333;
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-    z-index: 2;
-}
-
-/* Envelope Open State */
-.envelope.open .top-flap {
-    transform: rotateX(180deg);
-    z-index: 1; /* Move behind letter when open */
-}
-
-.envelope.open .letter {
-    transform: translateY(-120px);
-    z-index: 6;
-}
-
-.instruction-text {
-    text-align: center;
-    margin-top: 30px;
-    font-weight: 300;
-    letter-spacing: 2px;
-    opacity: 0.7;
-    animation: fade-pulse 2s infinite;
-}
-
-/* --- 5. Love Letter (Typewriter) --- */
-.typewriter-content {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    line-height: 1.6;
-    text-align: left;
-    min-height: 300px;
-    margin-bottom: 20px;
-    color: #fff;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
-}
-
-.typewriter-content p {
-    margin-bottom: 15px;
-    opacity: 0;
-    transform: translateY(10px);
-    animation: fade-up 0.8s forwards;
-}
-
-.cursor {
-    display: inline-block;
-    width: 2px;
-    height: 1.2em;
-    background-color: var(--text-gold);
-    vertical-align: middle;
-    animation: blink 0.8s step-end infinite;
-}
-
-/* --- 7. Proposal Scene --- */
-.ring-container {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 40px;
-    animation: float 3s ease-in-out infinite;
-}
-
-.band {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 80px;
-    border: 8px solid #ffd700;
-    border-radius: 50%;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), inset 0 0 10px rgba(255, 215, 0, 0.5);
-    background: transparent;
-}
-
-.diamond {
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 30px;
-    background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 50%, #b2ebf2 100%);
-    clip-path: polygon(20% 0%, 80% 0%, 100% 30%, 50% 100%, 0% 30%);
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
-    animation: diamond-sparkle 2s infinite alternate;
-}
-
-.proposal-text {
-    font-family: var(--font-heading);
-    font-size: 3rem;
-    margin-bottom: 40px;
-    background: linear-gradient(to right, #fff, var(--text-gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.button-group {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    position: relative;
-    height: 60px; /* To maintain height when NO button moves */
-}
-
-.btn-premium {
-    padding: 15px 40px;
-    border-radius: 30px;
-    border: 1px solid var(--glass-border);
-    font-family: var(--font-body);
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    backdrop-filter: blur(5px);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.btn-yes {
-    background: rgba(255, 42, 95, 0.2);
-    color: #fff;
-    box-shadow: 0 0 20px rgba(255, 42, 95, 0.3);
-}
-
-.btn-yes:hover {
-    background: rgba(255, 42, 95, 0.5);
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(255, 42, 95, 0.6);
-}
-
-.btn-no {
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
-    position: relative; /* Setup for JS movement */
-    z-index: 100;
-}
-
-/* --- 8. Celebration Scene --- */
-.celebration-content {
-    text-align: center;
-    z-index: 20;
-    width: 100%;
-}
-
-.massive-text {
-    font-family: var(--font-heading);
-    font-size: 5rem;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 20px;
-    text-shadow: 0 0 30px #ff2a5f, 0 0 60px #ff2a5f;
-    animation: pop-in 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.sub-massive-text {
-    font-family: var(--font-heading);
-    font-size: 3rem;
-    color: var(--text-gold);
-    font-style: italic;
-    margin-bottom: 50px;
-}
-
-.ending-text {
-    font-family: var(--font-body);
-    font-size: 1.5rem;
-    font-weight: 300;
-    letter-spacing: 3px;
-    margin-top: 40px;
-}
-
-.fade-in-delay {
-    opacity: 0;
-    animation: fade-up 1s forwards 1.5s;
-}
-
-.fade-in-delay-long {
-    opacity: 0;
-    animation: fade-up 1s forwards 3s;
-}
-
-/* --- Keyframe Animations --- */
-
-@keyframes pulse-glow {
-    0% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255,42,95,0.5)); }
-    100% { transform: scale(1.1); filter: drop-shadow(0 0 25px rgba(255,42,95,0.9)); }
-}
-
-@keyframes fade-pulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
-
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    14% { transform: scale(1.1); }
-    28% { transform: scale(1); }
-    42% { transform: scale(1.1); }
-    70% { transform: scale(1); }
-}
-
-@keyframes blink {
-    50% { opacity: 0; }
-}
-
-@keyframes fade-up {
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes diamond-sparkle {
-    0% { filter: brightness(1) drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
-    100% { filter: brightness(1.3) drop-shadow(0 0 25px rgba(255,255,255,1)); }
-}
-
-@keyframes pop-in {
-    0% { opacity: 0; transform: scale(0.5); }
-    100% { opacity: 1; transform: scale(1); }
-}
-
-/* Floating Particles (Generated by JS) */
-.particle {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: float-up linear infinite;
-}
-
-.particle-heart {
-    position: absolute;
-    color: #ff2a5f;
-    font-size: 1.2rem;
-    pointer-events: none;
-    animation: float-up-sway linear infinite;
-    filter: drop-shadow(0 0 5px rgba(255,42,95,0.5));
-}
-
-@keyframes float-up {
-    0% { transform: translateY(100vh); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateY(-100px); opacity: 0; }
-}
-
-@keyframes float-up-sway {
-    0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.6; }
-    50% { transform: translateY(50vh) translateX(20px) rotate(20deg); }
-    90% { opacity: 0.6; }
-    100% { transform: translateY(-100px) translateX(-20px) rotate(-20deg); opacity: 0; }
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .animated-text { font-size: 2.5rem; }
-    .glass-panel { padding: 25px; width: 95%; }
-    .typewriter-content { font-size: 1.3rem; min-height: 250px; }
-    .proposal-text { font-size: 2rem; }
-    .massive-text { font-size: 3rem; }
-    .sub-massive-text { font-size: 2rem; }
-    .envelope { width: 250px; height: 160px; }
-    .bottom-flap { border-width: 80px 125px; }
-    .left-flap, .right-flap, .top-flap { border-width: 80px 125px; }
-}
-/**
- * Ultra-Premium Interactive Proposal Script
- * Handles transitions, audio, typewriter effect, particle systems, and fireworks.
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- State & DOM Elements ---
-    const screens = {
-        loading: document.getElementById('loading-screen'),
-        intro: document.getElementById('intro-screen'),
-        envelope: document.getElementById('envelope-screen'),
-        letter: document.getElementById('letter-screen'),
-        proposal: document.getElementById('proposal-screen'),
-        celebration: document.getElementById('celebration-screen')
-    };
-
-    const bgMusic = document.getElementById('bg-music');
-    const startHeart = document.getElementById('start-heart');
-    const envelope = document.getElementById('envelope');
-    const envelopeWrapper = document.querySelector('.envelope-wrapper');
-    const typewriterContainer = document.getElementById('typewriter-text');
-    const btnContinue = document.getElementById('btn-continue');
-    const btnYes = document.getElementById('btn-yes');
-    const btnNo = document.getElementById('btn-no');
-
-    // Letter Content
-    const letterLines = [
-        "Dear Sona ❤️",
-        "Shayad ye meri zindagi ka sabse khaas message hai...",
-        "Jab se tum meri zindagi me aayi ho,",
-        "har din pehle se bhi khoobsurat lagne laga hai.",
-        "Tumhari smile meri duniya roshan kar deti hai.",
-        "Main perfect nahi hoon,",
-        "lekin ek baat ka wada karta hoon...",
-        "Main hamesha tumhari respect karunga,",
-        "tumhara saath dunga,",
-        "aur har mushkil me tumhare saath khada rahunga.",
-        "Sona...",
-        "Kya tum meri humsafar banogi? ❤️"
-    ];
-
-    // --- Helper Functions ---
-    
-    // Transition between screens
-    function switchScreen(fromScreen, toScreen, delay = 0) {
-        setTimeout(() => {
-            fromScreen.classList.remove('active');
-            fromScreen.classList.add('hidden');
-            
-            setTimeout(() => {
-                toScreen.classList.remove('hidden');
-                toScreen.classList.add('active');
-            }, 800); // Wait for fade out
-        }, delay);
-    }
-
-    // --- Boot Sequence ---
-    
-    // Simulate loading to build anticipation
-    setTimeout(() => {
-        switchScreen(screens.loading, screens.intro);
-        createParticles(); // Start background fireflies/hearts
-    }, 2500);
-
-
-    // --- Interactions ---
-
-    // 1. Start App / Play Music
-    startHeart.addEventListener('click', () => {
-        // Attempt to play audio
-        bgMusic.volume = 0.5;
-        bgMusic.play().catch(e => console.log("Audio play blocked by browser."));
-        
-        // Transition to envelope
-        switchScreen(screens.intro, screens.envelope);
-    });
-
-    // 2. Open Envelope
-    envelopeWrapper.addEventListener('click', function envelopeClick() {
-        // Remove listener to prevent multiple clicks
-        envelopeWrapper.removeEventListener('click', envelopeClick);
-        
-        // Trigger CSS animation
-        envelope.classList.add('open');
-        
-        // Transition to letter reading
-        switchScreen(screens.envelope, screens.letter, 2000);
-        
-        // Start typewriter after transition
-        setTimeout(() => {
-            typeWriterEffect(letterLines, typewriterContainer, () => {
-                // Show continue button when done
-                btnContinue.classList.remove('hidden');
-                btnContinue.style.display = 'inline-block';
-                btnContinue.style.animation = 'fade-up 1s forwards';
-            });
-        }, 3000);
-    });
-
-    // 3. Typewriter Effect Logic
-    function typeWriterEffect(lines, container, callback) {
-        container.innerHTML = '';
-        let lineIndex = 0;
-        let charIndex = 0;
-        
-        // Create cursor
-        const cursor = document.createElement('span');
-        cursor.className = 'cursor';
-
-        function type() {
-            if (lineIndex < lines.length) {
-                // If starting a new line, create a <p> tag
-                if (charIndex === 0) {
-                    const p = document.createElement('p');
-                    container.appendChild(p);
-                    container.appendChild(cursor); // Keep cursor at the end
-                }
-
-                const currentLine = lines[lineIndex];
-                const paragraphs = container.querySelectorAll('p');
-                const currentP = paragraphs[paragraphs.length - 1];
-
-                if (charIndex < currentLine.length) {
-                    currentP.innerHTML += currentLine.charAt(charIndex);
-                    charIndex++;
-                    // Speed variation for realism
-                    let speed = Math.random() * 50 + 30; 
-                    if (currentLine.charAt(charIndex - 1) === ',' || currentLine.charAt(charIndex - 1) === '.') {
-                        speed += 300; // Pause at punctuation
-                    }
-                    setTimeout(type, speed);
-                } else {
-                    // Line finished
-                    lineIndex++;
-                    charIndex = 0;
-                    setTimeout(type, 800); // Pause between lines
-                }
-            } else {
-                // Finished all typing
-                cursor.remove();
-                if(callback) callback();
-            }
-        }
-        
-        type();
-    }
-
-    // 4. Continue to Proposal
-    btnContinue.addEventListener('click', () => {
-        switchScreen(screens.letter, screens.proposal);
-    });
-
-    // 5. NO Button Evasion Logic
-    const moveNoButton = () => {
-        const x = Math.random() * (window.innerWidth - btnNo.offsetWidth - 40) - (window.innerWidth/2) + btnNo.offsetWidth/2;
-        const y = Math.random() * (window.innerHeight - btnNo.offsetHeight - 40) - (window.innerHeight/2) + btnNo.offsetHeight/2;
-        
-        btnNo.style.position = 'absolute';
-        btnNo.style.transform = `translate(${x}px, ${y}px)`;
-        btnNo.style.transition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
-    };
-
-    btnNo.addEventListener('mouseover', moveNoButton);
-    btnNo.addEventListener('touchstart', (e) => {
-        e.preventDefault(); // Prevent touch click
-        moveNoButton();
-    });
-
-    // 6. YES Button - Final Celebration
-    btnYes.addEventListener('click', () => {
-        switchScreen(screens.proposal, screens.celebration);
-        
-        // Change music mood if possible, or just increase volume
-        let vol = 0.5;
-        const fadeAudio = setInterval(() => {
-            if (vol < 1.0) {
-                vol += 0.05;
-                bgMusic.volume = Math.min(1, vol);
-            } else {
-                clearInterval(fadeAudio);
-            }
-        }, 200);
-
-        // Start intense visual effects
-        setTimeout(() => {
-            startFireworks();
-            createExplosionHearts();
-        }, 1000);
-    });
-
-    // --- Particle Systems ---
-
-    const particleContainer = document.getElementById('particle-container');
-
-    function createParticles() {
-        // Fireflies
-        for(let i=0; i<30; i++) {
-            createSingleParticle('firefly');
-        }
-        // Background Hearts
-        setInterval(() => {
-            createSingleParticle('heart');
-        }, 2000);
-    }
-
-    function createSingleParticle(type) {
-        const el = document.createElement('div');
-        
-        if (type === 'firefly') {
-            el.className = 'particle';
-            const size = Math.random() * 3 + 1;
-            el.style.width = `${size}px`;
-            el.style.height = `${size}px`;
-            el.style.background = 'rgba(255, 215, 0, 0.6)';
-            el.style.boxShadow = `0 0 ${size*2}px rgba(255, 215, 0, 0.8)`;
-        } else if (type === 'heart') {
-            el.className = 'particle-heart';
-            el.innerHTML = '❤️';
-            el.style.fontSize = `${Math.random() * 15 + 10}px`;
-        }
-
-        el.style.left = `${Math.random() * 100}vw`;
-        
-        const duration = Math.random() * 10 + 10;
-        el.style.animationDuration = `${duration}s`;
-        el.style.animationDelay = `${Math.random() * 5}s`;
-
-        particleContainer.appendChild(el);
-
-        // Cleanup
-        setTimeout(() => {
-            el.remove();
-            createSingleParticle(type); // Regenerate
-        }, (duration + 5) * 1000);
-    }
-
-    function createExplosionHearts() {
-        for(let i = 0; i < 50; i++) {
-            setTimeout(() => {
-                const el = document.createElement('div');
-                el.className = 'particle-heart';
-                el.innerHTML = ['❤️', '💖', '💘', '✨'][Math.floor(Math.random()*4)];
-                el.style.left = '50%';
-                el.style.top = '50%';
-                
-                // Explode outward
-                const angle = Math.random() * Math.PI * 2;
-                const velocity = Math.random() * 150 + 50;
-                const tx = Math.cos(angle) * velocity;
-                const ty = Math.sin(angle) * velocity;
-                
-                el.style.transform = `translate(-50%, -50%) scale(0)`;
-                el.style.transition = `all ${Math.random() * 1 + 1}s cubic-bezier(0.25, 1, 0.5, 1)`;
-                
-                particleContainer.appendChild(el);
-                
-                requestAnimationFrame(() => {
-                    el.style.transform = `translate(calc(-50% + ${tx}vw), calc(-50% + ${ty}vh)) scale(${Math.random()*2+1})`;
-                    el.style.opacity = 0;
-                });
-
-                setTimeout(() => el.remove(), 2000);
-            }, i * 50);
-        }
-    }
-
-    // --- HTML5 Canvas Fireworks ---
-    
-    function startFireworks() {
-        const canvas = document.getElementById('fireworks-canvas');
-        const ctx = canvas.getContext('2d');
-        
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        const fireworks = [];
-        const particles = [];
-
-        class Firework {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = canvas.height;
-                this.targetY = Math.random() * (canvas.height / 2);
-                this.speed = Math.random() * 3 + 2;
-                this.angle = Math.PI / 2 + (Math.random() - 0.5) * 0.5; // Straight up with slight variance
-                this.vx = Math.cos(this.angle) * this.speed;
-                this.vy = -Math.sin(this.angle) * this.speed;
-                this.color = `hsl(${Math.random() * 60 + 320}, 100%, 60%)`; // Pinks, purples, golds
-                this.trail = [];
-            }
-            update() {
-                this.trail.push({x: this.x, y: this.y});
-                if(this.trail.length > 5) this.trail.shift();
-                
-                this.x += this.vx;
-                this.y += this.vy;
-                
-                // Add gravity
-                this.vy += 0.02;
-
-                if (this.y <= this.targetY || this.vy >= 0) {
-                    this.explode();
-                    return false; // Remove
-                }
-                return true;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.moveTo(this.trail[0]?.x || this.x, this.trail[0]?.y || this.y);
-                ctx.lineTo(this.x, this.y);
-                ctx.strokeStyle = this.color;
-                ctx.lineWidth = 2;
-                ctx.stroke();
-            }
-            explode() {
-                for(let i = 0; i < 50; i++) {
-                    particles.push(new Particle(this.x, this.y, this.color));
-                }
-            }
-        }
-
-        class Particle {
-            constructor(x, y, color) {
-                this.x = x;
-                this.y = y;
-                this.color = color;
-                const angle = Math.random() * Math.PI * 2;
-                const speed = Math.random() * 5 + 1;
-                this.vx = Math.cos(angle) * speed;
-                this.vy = Math.sin(angle) * speed;
-                this.life = 1.0;
-                this.decay = Math.random() * 0.015 + 0.015;
-            }
-            update() {
-                this.vx *= 0.95; // Friction
-                this.vy *= 0.95;
-                this.vy += 0.1; // Gravity
-                this.x += this.vx;
-                this.y += this.vy;
-                this.life -= this.decay;
-                return this.life > 0;
-            }
-            draw() {
-                ctx.globalAlpha = this.life;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.fill();
-                ctx.globalAlpha = 1.0;
-            }
-        }
-
-        function animate() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.2)'; // Trailing effect
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            if (Math.random() < 0.05) { // Spawn rate
-                fireworks.push(new Firework());
-            }
-
-            for (let i = fireworks.length - 1; i >= 0; i--) {
-                if (!fireworks[i].update()) {
-                    fireworks.splice(i, 1);
-                } else {
-                    fireworks[i].draw();
-                }
-            }
-
-            for (let i = particles.length - 1; i >= 0; i--) {
-                if (!particles[i].update()) {
-                    particles.splice(i, 1);
-                } else {
-                    particles[i].draw();
-                }
-            }
-
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-    }
-});
